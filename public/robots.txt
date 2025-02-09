@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://0x4m4.com/sitemap.xml 

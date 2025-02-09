@@ -64,25 +64,64 @@ const components = {
     )
   },
   
-  img: (props: any) => (
-    <figure className="my-6">
-      <div className="relative w-full max-w-2xl">
-        <Image
-          src={props.src}
-          alt={props.alt || "Blog image"}
-          width={700}
-          height={500}
-          className="object-contain w-full h-auto"
-          quality={100}
-        />
-      </div>
-      {props.alt && (
-        <figcaption className="text-red-400/70 text-sm mt-2 font-mono">
-          {props.alt}
-        </figcaption>
-      )}
-    </figure>
-  ),
+  img: ({ src, alt, ...props }: any) => {
+    // If no image source is provided, return null
+    if (!src) return null;
+
+    // Check if the image is an external URL
+    const isExternal = src.startsWith('http') || src.startsWith('https');
+    
+    // For external images, use them directly
+    if (isExternal) {
+      return (
+        <figure className="my-6">
+          <div className="relative w-full max-w-2xl">
+            <Image
+              src={src}
+              alt={alt || "Blog post image"}
+              width={700}
+              height={475}
+              className="object-contain w-full h-auto"
+              unoptimized={true}
+            />
+          </div>
+          {alt && (
+            <figcaption className="text-red-400/70 text-sm mt-2 font-mono">
+              {alt}
+            </figcaption>
+          )}
+        </figure>
+      );
+    }
+
+    // For local images, handle the path correctly
+    // Remove any leading slash and 'images/' prefix if present
+    const imagePath = src.replace(/^\/?(images\/)?/, '')
+    const fullImagePath = `/images/${imagePath}`
+
+    return (
+      <figure className="my-6">
+        <div className="relative w-full max-w-2xl">
+          <Image
+            src={fullImagePath}
+            alt={alt || "Blog post image"}
+            width={700}
+            height={475}
+            className="object-contain w-full h-auto"
+            onError={(e) => {
+              // If image fails to load, replace with a placeholder or hide
+              e.currentTarget.style.display = 'none'
+            }}
+          />
+        </div>
+        {alt && (
+          <figcaption className="text-red-400/70 text-sm mt-2 font-mono">
+            {alt}
+          </figcaption>
+        )}
+      </figure>
+    );
+  },
 
   table: (props: any) => (
     <div className="overflow-x-auto my-6">

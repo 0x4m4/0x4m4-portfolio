@@ -1,14 +1,13 @@
 import { getAllPosts } from '@/lib/posts'
 import { MetadataRoute } from 'next'
-import { PostMetadata } from '@/types/post'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const posts = getAllPosts() as PostMetadata[]
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const posts = getAllPosts()
   const baseUrl = 'https://0x4m4.com'
 
   const blogPosts = posts.map(post => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: post.date ? new Date(post.date) : new Date(),
+    lastModified: post.date ? new Date(post.date).toISOString() : new Date().toISOString(),
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }))
@@ -16,13 +15,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: new Date().toISOString(),
       changeFrequency: 'yearly',
       priority: 1,
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: new Date(),
+      lastModified: new Date().toISOString(),
       changeFrequency: 'daily',
       priority: 0.9,
     },

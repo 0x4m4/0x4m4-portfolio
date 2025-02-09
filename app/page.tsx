@@ -20,7 +20,7 @@ import {
   FileText,
   Search,
   FileCode,
-  Home,
+  Home as HomeIcon,
   Computer,
   Globe,
   Signal,
@@ -28,7 +28,6 @@ import {
 import Image from "next/image"
 import Link from "next/link"
 import GlitchText from "@/components/GlitchText"
-import SEOHead from "@/components/SEOHead"
 
 interface Project {
   title: string
@@ -61,7 +60,7 @@ const TypewriterText = ({ text }: { text: string }) => {
   )
 }
 
-export default function Portfolio() {
+export default function HomePage() {
   const [currentProject, setCurrentProject] = useState<number>(0)
   const [isMatrixActive, setIsMatrixActive] = useState(true)
 
@@ -76,19 +75,11 @@ export default function Portfolio() {
       github: "https://github.com/0x4m4/0xCipherLink",
     },
     {
-      title: "BloodCodeCTF",
-      description: "This repository contains all the challenges and their source files from the Capture The Flag event codenamed Blood Code. This event was organized by the Sir Syed CASE Institute of Technology Cyber Security Society, with the main technical sponsor being 0x4m4.",
-      image: "/bloodcode.jpg?height=400&width=400",
-      role: "Challenge / CTF Developer",
-      tech: ["CTF Challenges", "Web Exploitation", "Reverse Engineering", "Cryptography", "Pwn", "Pyjail", "Forensics"],
-      github: "https://github.com/0x4m4/BloodCodeCTF",
-    },
-    {
       title: "ShadowVault",
       description:
         "Advanced encryption toolkit featuring quantum-resistant algorithms and zero-knowledge proofs for secure data storage and transmission.",
-      image: "/placeholder.svg?height=400&width=400",
-      role: "SECURITY ARCHITECT",
+      image: "/placeholder.png?height=400&width=400",
+      role: "COMING SOON",
       tech: ["Rust", "Go", "ZK-SNARKs"],
       github: "#",
     },
@@ -96,8 +87,8 @@ export default function Portfolio() {
       title: "NeuralGuard",
       description:
         "AI-powered intrusion detection system using deep learning to identify and prevent zero-day attacks in real-time.",
-      image: "/placeholder.svg?height=400&width=400",
-      role: "ML SECURITY RESEARCHER",
+      image: "/placeholder.png?height=400&width=400",
+      role: "COMING SOON",
       tech: ["Python", "PyTorch", "Kubernetes"],
       github: "#",
     },
@@ -105,11 +96,6 @@ export default function Portfolio() {
 
   return (
     <>
-      <SEOHead
-        title="0x4m4 - Ethical Hacker & Cyber Security Specialist"
-        description="Explore the portfolio of 0x4m4, an ethical hacker and cyber security specialist with expertise in AI-driven security solutions, cryptography, and advanced penetration testing."
-        canonicalUrl="https://www.0x4m4.com"
-      />
       <div className="min-h-screen bg-black text-red-50 font-mono relative p-8 overflow-hidden">
         {/* Matrix Rain Effect */}
         <div className="fixed inset-0 bg-black opacity-50 pointer-events-none">
@@ -123,12 +109,12 @@ export default function Portfolio() {
         <nav className="flex justify-between items-center mb-20 text-sm relative z-10">
           <div className="flex gap-8">
             {[
-              { label: "Home", active: true },
-              { label: "Blog", active: false },
+              { label: "Home", path: "/", active: true },
+              { label: "Blog", path: "/blog", active: false },
             ].map((item) => (
               <Link
                 key={item.label}
-                href={item.label.toLowerCase()}
+                href={item.path}
                 className={`group relative overflow-hidden ${item.active ? "text-red-500" : "text-gray-500 hover:text-red-500"}`}
               >
                 <span className="inline-block transform group-hover:-translate-y-full transition-transform duration-300">
@@ -163,10 +149,10 @@ export default function Portfolio() {
               {/* Stats Grid */}
               <div className="grid grid-cols-4 gap-4 mb-8">
                 {[
-                  { icon: Shield, label: "Security Audits", value: "153+" },
-                  { icon: Terminal, label: "Zero Days", value: "7" },
+                  { icon: Shield, label: "Security Audits", value: "98+" },
+                  { icon: Terminal, label: "Zero Days", value: "3" },
                   { icon: Cpu, label: "Systems Hardened", value: "342" },
-                  { icon: Network, label: "Success Rate", value: "99.9%" },
+                  { icon: Network, label: "Success Rate", value: "99%" },
                 ].map((stat, index) => (
                   <div
                     key={index}
@@ -190,7 +176,7 @@ export default function Portfolio() {
                   <span className="relative font-mono">contact@0x4m4.com</span>
                 </Link>
                 <Link
-                  href="https://github.com/0x4m4/"
+                  href="#about"
                   className="group relative px-6 py-3 text-red-500 hover:text-black transition-colors duration-300"
                 >
                   <span className="absolute inset-0 border border-red-500 bg-transparent group-hover:bg-red-500 transition-colors duration-300"></span>
@@ -241,10 +227,11 @@ export default function Portfolio() {
 
           {/* Portfolio Section */}
           <section id="projects" className="mb-32 relative z-10">
-            <h2 className="text-4xl mb-16 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl mb-16 text-center break-words">
               <GlitchText>[SECURITY_PORTFOLIO]</GlitchText>
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 max-w-6xl mx-auto px-4">
+
               <div className="relative group w-full h-[300px] lg:h-[400px]">
                 <div className="absolute inset-0 bg-red-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-lg z-10" />
                 <div className="w-full h-full rounded-lg overflow-hidden border border-red-500 relative">
@@ -309,7 +296,7 @@ export default function Portfolio() {
 
           {/* Services Section */}
           <section className="mb-32 relative z-10">
-            <h2 className="text-4xl mb-16 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl mb-16 text-center break-words">
               <GlitchText>[CORE_CAPABILITIES]</GlitchText>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 max-w-7xl mx-auto">
@@ -365,7 +352,7 @@ export default function Portfolio() {
 
           {/* Why Choose Me Section */}
           <section className="mb-32 relative z-10 max-w-7xl mx-auto">
-            <h2 className="text-4xl mb-12 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl mb-12 text-center break-words">
               <GlitchText>[WHY_CHOOSE_ME]</GlitchText>
             </h2>
 
@@ -452,7 +439,7 @@ export default function Portfolio() {
 
           {/* Media Coverage section */}
           <section className="mb-32 relative z-10 max-w-4xl mx-auto">
-            <h2 className="text-4xl mb-12 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl mb-12 text-center break-words">
               <GlitchText>[MEDIA_COVERAGE]</GlitchText>
             </h2>
             <div className="space-y-4">
@@ -540,7 +527,7 @@ export default function Portfolio() {
                     role: "DevSecOps Intern",
                     company: "CitrusBits",
                     period: "July 2023 - October 2023",
-                    location: "Islamabad [Hybrid]",
+                    location: "Islamabad [Onsite]",
                   },
                   {
                     role: "Cyber Security Consultant",

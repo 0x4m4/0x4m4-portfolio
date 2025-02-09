@@ -426,3 +426,12 @@
   }
 }
 
+/* Add these styles to your existing globals.css */
+.breadcrumb-link {
+  @apply text-red-400/80 hover:text-red-400 transition-colors font-mono;
+}
+
+.tag-link {
+  @apply px-3 py-1 bg-red-500/10 rounded-full text-red-400/80 hover:text-red-400 hover:bg-red-500/20 transition-colors font-mono text-sm;
+}
+
