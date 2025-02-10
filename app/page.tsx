@@ -739,17 +739,17 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* Connect Section */}
-          <section className="relative z-10 max-w-4xl mx-auto">
-            <h2 className="text-4xl mb-16 text-center">
-            <GlitchText>[SECURE_CHANNELS]</GlitchText>
+          {/* Social Channels Section */}
+          <section className="mb-32 relative z-10 max-w-4xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl mb-12 text-center break-words">
+              <GlitchText>[SECURE_CHANNELS]</GlitchText>
             </h2>
             <div className="flex justify-center gap-8">
               {[
-                { name: "Signal", href: "#", icon: Signal },
-                { name: "Twitter", href: "#", icon: Webhook },
-                { name: "GitHub", href: "#", icon: Code },
-                { name: "Email", href: "#", icon: Lock },
+                { name: "Signal", href: "/", icon: Signal },
+                { name: "Twitter", href: "/", icon: Webhook },
+                { name: "GitHub", href: "/", icon: Code },
+                { name: "Email", href: "/", icon: Lock },
               ].map((social) => (
                 <Link key={social.name} href={social.href} className="group relative w-32 h-32">
                   <div className="absolute inset-0 border border-red-500 rounded-full animate-[spin_10s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -760,6 +760,14 @@ export default function HomePage() {
               ))}
             </div>
           </section>
+
+          {/* Copyright Section */}
+          <footer className="text-center pb-8 text-red-500/60 font-mono text-sm relative z-10">
+            <div className="flex items-center justify-center gap-2">
+              <Terminal className="w-4 h-4" />
+              <span>&copy; {new Date().getFullYear()} 0x4m4. All rights reserved.</span>
+            </div>
+          </footer>
         </main>
       </div>
     </>

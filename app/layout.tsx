@@ -51,6 +51,44 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://0x4m4.com',
   },
+  icons: {
+    icon: [
+      {
+        rel: 'icon',
+        url: '/favicon.ico',
+        sizes: 'any',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        url: '/icon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        url: '/icon-16x16.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '192x192',
+        url: '/icon-192x192.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '512x512',
+        url: '/icon-512x512.png',
+      },
+    ],
+    apple: {
+      rel: 'apple-touch-icon',
+      url: '/apple-icon.png',
+      sizes: '180x180',
+    },
+  },
 }
 
 export default function RootLayout({
