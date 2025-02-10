@@ -11,28 +11,37 @@ const spaceMono = Space_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://0x4m4.com'),
   title: {
     default: '0x4m4 - Ethical Hacker & Security Specialist',
     template: '%s | 0x4m4'
   },
-  description: 'Ethical Hacker and Cyber Security Specialist focusing on penetration testing, network security, and cryptography.',
+  description: 'Ethical Hacker and Security Specialist focusing on penetration testing, network security, and cryptography.',
+  metadataBase: new URL('https://0x4m4.com'),
   keywords: ['ethical hacking', 'cyber security', 'penetration testing', 'network security', 'cryptography'],
   authors: [{ name: '0x4m4' }],
   creator: '0x4m4',
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://0x4m4.com',
     title: '0x4m4 - Ethical Hacker & Security Specialist',
-    description: 'Ethical Hacker and Cyber Security Specialist focusing on penetration testing, network security, and cryptography.',
+    description: 'Ethical Hacker and Security Specialist focusing on penetration testing, network security, and cryptography.',
+    url: 'https://0x4m4.com',
     siteName: '0x4m4',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: '/og-image.png', // Create a default OG image in public folder
+        width: 1200,
+        height: 630,
+        alt: '0x4m4 - Ethical Hacker & Security Specialist',
+      }
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: '0x4m4 - Ethical Hacker & Security Specialist',
-    description: 'Ethical Hacker and Cyber Security Specialist focusing on penetration testing, network security, and cryptography.',
+    description: 'Ethical Hacker and Security Specialist focusing on penetration testing, network security, and cryptography.',
     creator: '@0x4m4',
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,
@@ -52,42 +61,7 @@ export const metadata: Metadata = {
     canonical: 'https://0x4m4.com',
   },
   icons: {
-    icon: [
-      {
-        rel: 'icon',
-        url: '/favicon.ico',
-        sizes: 'any',
-      },
-      {
-        rel: 'icon',
-        type: 'image/png',
-        sizes: '32x32',
-        url: '/icon-32x32.png',
-      },
-      {
-        rel: 'icon',
-        type: 'image/png',
-        sizes: '16x16',
-        url: '/icon-16x16.png',
-      },
-      {
-        rel: 'icon',
-        type: 'image/png',
-        sizes: '192x192',
-        url: '/icon-192x192.png',
-      },
-      {
-        rel: 'icon',
-        type: 'image/png',
-        sizes: '512x512',
-        url: '/icon-512x512.png',
-      },
-    ],
-    apple: {
-      rel: 'apple-touch-icon',
-      url: '/apple-icon.png',
-      sizes: '180x180',
-    },
+    icon: [{ rel: 'icon', url: '/favicon.ico', sizes: 'any' }],
   },
 }
 

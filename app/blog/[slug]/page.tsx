@@ -17,40 +17,51 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
-    // Use direct file system access instead of API route
     const { data } = getPostData(params.slug)
     
     if (!data) {
       return {
         title: 'Post Not Found | 0x4m4',
-        description: 'The requested blog post could not be found.'
+        description: 'The requested blog post could not be found.',
       }
     }
 
     const title = `${data.title} | 0x4m4`
-    const description = data.description || 'A blog post by 0x4m4'
+    const description = data.description || `A blog post by 0x4m4 about ${data.title}`
 
     return {
       title,
       description,
       openGraph: {
-        title,
+        title: data.title,
         description,
+        url: `https://0x4m4.com/blog/${params.slug}`,
+        siteName: '0x4m4',
+        locale: 'en_US',
         type: 'article',
         publishedTime: data.date,
         authors: ['0x4m4'],
-        tags: data.tags,
+        images: [
+          {
+            url: data.image || '/og-image.png', // Fallback to default OG image
+            width: 1200,
+            height: 630,
+            alt: data.title,
+          }
+        ],
       },
       twitter: {
         card: 'summary_large_image',
-        title,
+        title: data.title,
         description,
-      }
+        creator: '@0x4m4',
+        images: [data.image || '/og-image.png'], // Fallback to default OG image
+      },
     }
   } catch (error) {
     return {
       title: 'Post Not Found | 0x4m4',
-      description: 'The requested blog post could not be found.'
+      description: 'The requested blog post could not be found.',
     }
   }
 }
