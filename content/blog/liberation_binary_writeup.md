@@ -1,6 +1,6 @@
 ---
-title: "SS CASE IT 2025 - Liberation Binary Writeup"
-date: "2025-01-27"
+title: "EotW CTF SS CASE IT 2025 - Liberation Binary Writeup"
+date: "2025-05-27"
 description: "A classic buffer overflow exploitation challenge featuring the AI regime resistance theme. Learn how to bypass authentication and access the resistance mainframe through stack-based buffer overflow."
 tags: ["pwn", "buffer-overflow", "binary-exploitation", "ctf", "stack", "gets-vulnerability"]
 ---
